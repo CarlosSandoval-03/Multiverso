@@ -1,0 +1,96 @@
+{
+	"data": {
+		"2-1": {
+			"image": "cbdehbibe",
+			"energyBarrier": 3,
+			"numLinks": 6
+		},
+		"6-1": {
+			"image": "gbhifnbdcb",
+			"energyBarrier": 7,
+			"numLinks": 6
+		},
+		"7-11": {
+			"image": "hbibebmdbenho",
+			"energyBarrier": 18,
+			"numLinks": 6
+		},
+		"1-14": {
+			"image": "befbebjcnehhf",
+			"energyBarrier": 15,
+			"numLinks": 6
+		},
+		"8-14": {
+			"image": "iembbcidjgcjl",
+			"energyBarrier": 22,
+			"numLinks": 6
+		},
+		"9-10": {
+			"image": "jajbebndcfaic",
+			"energyBarrier": 19,
+			"numLinks": 6
+		},
+		"10-15": {
+			"image": "afbabfcfefgkba",
+			"energyBarrier": 25,
+			"numLinks": 6
+		},
+		"5-9": {
+			"image": "fjenbccadmgh",
+			"energyBarrier": 14,
+			"numLinks": 6
+		},
+		"10-1": {
+			"image": "abbcnbacidi",
+			"energyBarrier": 11,
+			"numLinks": 6
+		},
+		"13-8": {
+			"image": "dilbecadefeii",
+			"energyBarrier": 21,
+			"numLinks": 6
+		},
+		"13-6": {
+			"image": "dgjbabjcjedhh",
+			"energyBarrier": 19,
+			"numLinks": 6
+		},
+		"13-13": {
+			"image": "ddbbbecfeegjan",
+			"energyBarrier": 26,
+			"numLinks": 5
+		},
+		"13-10": {
+			"image": "danbicgdefkjj",
+			"energyBarrier": 23,
+			"numLinks": 3
+		},
+		"12-7": {
+			"image": "chjbbbkcleghc",
+			"energyBarrier": 19,
+			"numLinks": 3
+		},
+		"11-15": {
+			"image": "bfbbbgcheihabi",
+			"energyBarrier": 26,
+			"numLinks": 1
+		}
+	},
+	"links": [
+		[0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0],
+		[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+		[0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
+		[0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0],
+		[0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+	]
+}

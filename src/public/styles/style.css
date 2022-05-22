@@ -1,0 +1,40 @@
+:root {
+	--main-page-background-color: black;
+	--canva-background-color: rgb(0, 255, 0);
+	--controller-background-color: red;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+	background-color: var(--main-page-background-color);
+}
+
+#mainView {
+	background-color: var(--canva-background-color);
+	display: flex;
+	justify-content: center;
+}
+
+#controller {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 100%;
+	height: auto;
+
+	background-color: var(--controller-background-color);
+}
+
+#controller button {
+	font-size: 2em;
+	border-radius: 0.9em;
+	padding: 2em;
+}
+
+canvas {
+	width: 100%;
+	height: auto;
+}
