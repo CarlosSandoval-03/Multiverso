@@ -5,6 +5,7 @@ function preload() {
 	let data = loadJSON(URL, () => {
 		multiverseFile = data;
 		multiverse = new Multiverse(multiverseFile);
+		multiverse.createTemplate(windowWidth, windowHeight / 1.2);
 	});
 }
 
