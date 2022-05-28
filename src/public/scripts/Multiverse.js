@@ -1,4 +1,5 @@
 class Multiverse {
+	/** Reference: https://p5js.org/es/reference/#/p5.Vector/heading */
 	static drawArrow = (
 		init,
 		end,
