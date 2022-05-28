@@ -77,6 +77,8 @@ class Multiverse {
 			newLinks.push(this.links[i]);
 		}
 		this.links = newLinks;
+
+		this.selectedUniverse = this.universes[this.universes.length - 1];
 		return true;
 	}
 
