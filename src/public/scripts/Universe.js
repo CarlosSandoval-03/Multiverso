@@ -33,7 +33,7 @@ class Universe {
 		this.numLinks = numLinks;
 
 		// Representative Image
-		this.urlImage = undefined;
+		this.urlImage = Universe.URL_RANDOM_IMAGES_ERROR;
 		this.fetchRepresentativeImage();
 	}
 
@@ -64,17 +64,6 @@ class Universe {
 			.catch((error) => {
 				console.error(error);
 				this.fetchRepresentativeImage();
-			});
-	}
-
-	// P5 Load Sprite
-	loadImage() {
-		loadImage(this.urlImage)
-			.then((img) => {
-				this.image = img;
-			})
-			.catch((error) => {
-				console.error(`NOT IMAGE LOADED: ${error}`);
 			});
 	}
 }
