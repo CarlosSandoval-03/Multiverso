@@ -23,9 +23,10 @@ class Multiverse {
 		this.links = jsonData["links"];
 
 		this.createMultiverse(jsonData["data"]);
-
 		this.template = {};
+
 		this.selectedUniverse = this.universes[0];
+		this.creatorMode = false;
 	}
 
 	createMultiverse(object) {
@@ -37,10 +38,9 @@ class Multiverse {
 
 	createTemplate(width, height) {
 		for (let universe of this.universes) {
-			let xPos, yPos;
 			this.template[universe.name] = {
-				x: xPos,
-				y: yPos,
+				x: undefined,
+				y: undefined,
 				connections: [],
 				selected: false,
 			};
@@ -48,9 +48,41 @@ class Multiverse {
 		this.generateGraph(width, height);
 	}
 
+	addUniverse(universeData, width, height) {
+		for (let universe in this.template) {
+			if (universeData.name == universe) {
+				alert("El nombre del nuevo universo ya existe");
+				return true;
+			}
+		}
+
+		let info = {
+			image: universeData.image,
+			energyBarrier: universeData.energyBarrier,
+			numLinks: universeData.numLinks,
+		};
+		let universe = new Universe(universeData.name, info);
+
+		this.universes.push(universe);
+		this.template[universe.name] = {
+			x: random(Universe.SIZE_NODE, width - Universe.SIZE_NODE),
+			y: random(Universe.SIZE_NODE, height - Universe.SIZE_NODE),
+			connections: [],
+			selected: false,
+		};
+
+		let newLinks = [];
+		for (let i = 0; i < this.links.length; i++) {
+			this.links[i].push(0);
+			newLinks.push(this.links[i]);
+		}
+		this.links = newLinks;
+		return true;
+	}
+
 	/**
 	 * Reference: https://discourse.processing.org/t/how-to-add-text-inside-circle-or-any-other-shapes-in-p5-js/20092
-	 * User: Yom - Processin Foundation
+	 * User: Yom - Processing Foundation
 	 */
 	generateGraph(width, height) {
 		let nodes = [];
@@ -109,6 +141,31 @@ class Multiverse {
 		}
 	}
 
+	selectUniverse() {
+		for (let universe in this.template) {
+			let node = createVector(
+				this.template[universe].x,
+				this.template[universe].y
+			);
+
+			if (dist(mouseX, mouseY, node.x, node.y) < Universe.SIZE_NODE / 2) {
+				this.template[universe].selected = undefined;
+
+				if (mouseIsPressed === true) {
+					for (let universe of this.universes) {
+						if (universe.name === node) {
+							this.selectedUniverse = universe;
+						}
+					}
+				}
+			} else {
+				setTimeout(() => {
+					this.template[universe].selected = false;
+				}, 100);
+			}
+		}
+	}
+
 	drawConnect(universe1, universe2) {
 		let init = createVector(
 			this.template[universe1].x,
@@ -118,29 +175,19 @@ class Multiverse {
 			this.template[universe2].x - init.x,
 			this.template[universe2].y - init.y
 		);
-
 		if (dist(mouseX, mouseY, init.x, init.y) < Universe.SIZE_NODE / 2) {
 			Multiverse.drawArrow(init, end, Universe.STROKE_SELECTED_COLOR, 3);
-			this.template[universe1].selected = undefined;
 			this.template[universe2].selected = true;
-
-			if (mouseIsPressed === true) {
-				for (let universe of this.universes) {
-					if (universe.name === universe1) {
-						this.selectedUniverse = universe;
-					}
-				}
-			}
 		} else {
 			Multiverse.drawArrow(init, end, Universe.STOKE_COLOR, 1);
 			setTimeout(() => {
 				this.template[universe2].selected = false;
-				this.template[universe1].selected = false;
 			}, 100);
 		}
 	}
 
 	draw() {
+		this.selectUniverse();
 		for (let i in this.template) {
 			let connections = this.template[i].connections;
 			for (let connection of connections) {

@@ -15,13 +15,28 @@
 	</head>
 
 	<body>
+		<!-- CREATE -->
+		<dialog id="create-window">
+			<h2>Iniciemos por un nombre</h2>
+			<form action="">
+				<input type="text" maxlength="1" />
+				<input type="text" maxlength="1" />
+				<p>-</p>
+				<input type="text" maxlength="1" />
+				<input type="text" maxlength="1" />
+			</form>
+			<button onclick="createUniverse()">Crear</button>
+			<button onclick="closeCreateWindow()">Cerrar</button>
+		</dialog>
+
+		<!-- READ -->
 		<dialog id="read-window">
 			<h2>Mira lo que guarda cada universo...</h2>
 			<p id="p-universe">
 				Universo: ??-?? <br />
 				Nombre: ????? <br />
-				Barrera Energetica: ?? <br />
-				Numero de Conexiones: ?
+				Barrera Energética: ?? <br />
+				Número de Conexiones: ?
 			</p>
 			<figure>
 				<img id="universe-photo" src="" alt="Random Photo of Universe" />
@@ -29,9 +44,14 @@
 			</figure>
 			<button onclick="closeReadWindow()">Cerrar</button>
 		</dialog>
+
+		<!-- UPDATE -->
+
+		<!-- DELETE -->
+
 		<main id="mainView"></main>
 		<div id="controller">
-			<button>Crear</button>
+			<button onclick="openCreateWindow()">Crear</button>
 			<button onclick="openReadWindow()">Revisar</button>
 			<button id="info-universe">Universo: ??-??</button>
 			<button>Editar</button>
