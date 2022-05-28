@@ -1,21 +1,6 @@
 const createWindow = document.getElementById("create-window");
 const readWindow = document.getElementById("read-window");
 
-/** READ */
-const openReadWindow = (universe = multiverse.selectedUniverse) => {
-	const img = document.getElementById("universe-photo");
-	img.src = universe.urlImage.url;
-
-	const info = document.getElementById("p-universe");
-	info.innerHTML = `Universo: ${universe.name}<br />Nombre: ${universe.keyImage}<br />Barrera Energetica: ${universe.energyBarrier}<br />Numero de Conexiones: ${universe.numLinks}`;
-
-	readWindow.showModal();
-};
-
-const closeReadWindow = () => {
-	readWindow.close();
-};
-
 /** CREATE */
 const openCreateWindow = () => {
 	const form = document.querySelector("form");
@@ -53,6 +38,12 @@ const readInputs = () => {
 const createUniverse = () => {
 	let infoNewUniverse = readInputs();
 
+	if (infoNewUniverse[0] == "-") {
+		closeCreateWindow();
+		alert("Por favor registre un valor valido");
+		return;
+	}
+
 	let fiboNumbers = infoNewUniverse[0].split("-");
 
 	let newUniverse = {
@@ -76,5 +67,22 @@ const closeCreateWindow = () => {
 	form.reset();
 	createWindow.close();
 };
+
+/** READ */
+const openReadWindow = (universe = multiverse.selectedUniverse) => {
+	const img = document.getElementById("universe-photo");
+	img.src = universe.urlImage.url;
+
+	const info = document.getElementById("p-universe");
+	info.innerHTML = `Universo: ${universe.name}<br />Nombre: ${universe.keyImage}<br />Barrera Energetica: ${universe.energyBarrier}<br />Numero de Conexiones: ${universe.numLinks}`;
+
+	readWindow.showModal();
+};
+
+const closeReadWindow = () => {
+	readWindow.close();
+};
+
+/** UPDATE */
 
 /** DELETE */
