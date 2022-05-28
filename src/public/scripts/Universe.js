@@ -8,6 +8,22 @@ class Universe {
 	static NODE_COLOR = "#FFFFFF";
 	static TEXT_NODE_COLOR = "#000000";
 	static INVERSE_FONT_SIZE = 5;
+	static STOKE_COLOR = "#000000";
+	static STROKE_WEIGTH = 2;
+
+	static STROKE_SELECTED_COLOR = "#FF0000";
+	static STROKE_SELECTED_WEIGTH = "#FF0000";
+	static NODE_SELECTED_COLOR = "rgba(0,255,0, 1)";
+	static NODE_MAIN_SELECTED_COLOR = "#6600A1";
+
+	static draw = (xPos, yPos, name = "", color = Universe.NODE_COLOR) => {
+		textAlign(CENTER, CENTER);
+		fill(color);
+		ellipse(xPos, yPos, Universe.SIZE_NODE, Universe.SIZE_NODE);
+		fill(Universe.TEXT_NODE_COLOR);
+		textSize(Universe.SIZE_NODE / Universe.INVERSE_FONT_SIZE);
+		text(name, xPos, yPos);
+	};
 
 	constructor(name, { image, energyBarrier, numLinks }) {
 		this.name = name;
@@ -61,14 +77,5 @@ class Universe {
 			.catch((error) => {
 				console.error(`NOT IMAGE LOADED: ${error}`);
 			});
-	}
-
-	draw(xPos, yPos) {
-		textAlign(CENTER, CENTER);
-		fill(Universe.NODE_COLOR);
-		ellipse(xPos, yPos, Universe.SIZE_NODE, Universe.SIZE_NODE);
-		fill(Universe.TEXT_NODE_COLOR);
-		textSize(Universe.SIZE_NODE / Universe.INVERSE_FONT_SIZE);
-		text(this.name, xPos, yPos);
 	}
 }
