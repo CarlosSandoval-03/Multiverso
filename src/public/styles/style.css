@@ -34,7 +34,19 @@ body {
 	padding: 2em;
 }
 
+#universe-photo {
+	width: 600px;
+	height: auto;
+}
+
 canvas {
 	width: 100%;
 	height: auto;
+}
+
+dialog::backdrop {
+	position: fixed;
+	inset: 0;
+	background: #0006;
+	backdrop-filter: blur(10px);
 }

@@ -15,6 +15,7 @@ class Universe {
 	static STROKE_SELECTED_WEIGTH = "#FF0000";
 	static NODE_SELECTED_COLOR = "rgba(0,255,0, 1)";
 	static NODE_MAIN_SELECTED_COLOR = "#6600A1";
+	static NODE_CLICKED_COLOR = "#FF8000";
 
 	static draw = (xPos, yPos, name = "", color = Universe.NODE_COLOR) => {
 		textAlign(CENTER, CENTER);
@@ -33,11 +34,7 @@ class Universe {
 
 		// Representative Image
 		this.urlImage = undefined;
-		this.image = undefined;
-
-		// Random Position
-		// this.xPos = Math.floor(Math.random() * windowWidth) + 1;
-		// this.yPos = Math.floor(Math.random() * (windowHeight / 1.3)) + 1;
+		this.fetchRepresentativeImage();
 	}
 
 	// Random image from keyword

@@ -25,6 +25,7 @@ class Multiverse {
 		this.createMultiverse(jsonData["data"]);
 
 		this.template = {};
+		this.selectedUniverse = this.universes[0];
 	}
 
 	createMultiverse(object) {
@@ -106,7 +107,6 @@ class Multiverse {
 				}
 			}
 		}
-		console.table(this.template);
 	}
 
 	drawConnect(universe1, universe2) {
@@ -123,6 +123,14 @@ class Multiverse {
 			Multiverse.drawArrow(init, end, Universe.STROKE_SELECTED_COLOR, 3);
 			this.template[universe1].selected = undefined;
 			this.template[universe2].selected = true;
+
+			if (mouseIsPressed === true) {
+				for (let universe of this.universes) {
+					if (universe.name === universe1) {
+						this.selectedUniverse = universe;
+					}
+				}
+			}
 		} else {
 			Multiverse.drawArrow(init, end, Universe.STOKE_COLOR, 1);
 			setTimeout(() => {

@@ -1,4 +1,6 @@
-let multiverseFile, multiverse;
+let multiverseFile,
+	multiverse,
+	count = 1;
 
 function preload() {
 	const URL = "src/data/multiverseData.json";
@@ -19,6 +21,11 @@ function setup() {
 function draw() {
 	background(220);
 	multiverse.draw();
+
+	if (mouseIsPressed === true || count > 0) {
+		let info = document.getElementById("info-universe");
+		info.innerHTML = `Universo: ${multiverse.selectedUniverse.name}`;
+	}
 }
 
 function windowResized() {
