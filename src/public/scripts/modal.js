@@ -91,6 +91,7 @@ const inputCreator = (universeName, isConnected = false, isFull = false) => {
 	let newDiv = document.createElement("div");
 
 	newDiv.id = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+	newDiv.className = "container-edit-input";
 
 	let newLabel = document.createElement("label");
 	newLabel.setAttribute(
@@ -116,20 +117,19 @@ const inputCreator = (universeName, isConnected = false, isFull = false) => {
 	form.appendChild(newDiv);
 };
 
-const enableMaxLinks = (idCheck) => {
-	document.getElementById(idCheck).disabled = false;
-};
-
-const disableMaxLinks = (idCheck) => {
-	document.getElementById(idCheck).disabled = true;
-};
-
 const openUpdateWindow = (universe = multiverse.selectedUniverse) => {
 	const form = document.querySelector("#form-update");
 	form.reset();
 
+	let inputs = document.querySelectorAll(".container-edit-input");
+	inputs.forEach((input) => {
+		form.removeChild(input);
+	});
+
+	const title = document.getElementById("title-update");
+	title.innerHTML = `Universo: ${universe.name}`;
+
 	let links = multiverse.template[universe.name].connections;
-	console.log(links);
 
 	for (let universeName in multiverse.template) {
 		let isConnected = false;
