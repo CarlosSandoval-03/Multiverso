@@ -51,6 +51,7 @@ class Universe {
 			})
 			.catch((error) => {
 				console.error(error);
+				this.fetchRepresentativeImage();
 			});
 	}
 
@@ -62,6 +63,7 @@ class Universe {
 			})
 			.catch((error) => {
 				console.error(error);
+				this.fetchRepresentativeImage();
 			});
 	}
 

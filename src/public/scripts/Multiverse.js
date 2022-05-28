@@ -49,7 +49,6 @@ class Multiverse {
 	}
 
 	addUniverse(universeData, width, height) {
-		console.log(universeData);
 		for (let universe in this.template) {
 			if (universeData.name == universe) {
 				alert("El nombre del nuevo universo ya existe");
@@ -69,7 +68,7 @@ class Multiverse {
 			x: random(Universe.SIZE_NODE, width - Universe.SIZE_NODE),
 			y: random(Universe.SIZE_NODE, height - Universe.SIZE_NODE),
 			connections: [],
-			selected: false,
+			selected: true,
 		};
 
 		let newLinks = [];
@@ -162,7 +161,7 @@ class Multiverse {
 			} else {
 				setTimeout(() => {
 					this.template[universe].selected = false;
-				}, 100);
+				}, 200);
 			}
 		}
 	}
