@@ -152,9 +152,9 @@ class Multiverse {
 				this.template[universe].selected = undefined;
 
 				if (mouseIsPressed === true) {
-					for (let universe of this.universes) {
-						if (universe.name === node) {
-							this.selectedUniverse = universe;
+					for (let universeTemp of this.universes) {
+						if (universeTemp.name === universe) {
+							this.selectedUniverse = universeTemp;
 						}
 					}
 				}
