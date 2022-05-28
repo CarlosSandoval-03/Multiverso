@@ -1,6 +1,7 @@
 const createWindow = document.getElementById("create-window");
 const readWindow = document.getElementById("read-window");
 
+/** READ */
 const openReadWindow = (universe = multiverse.selectedUniverse) => {
 	const img = document.getElementById("universe-photo");
 	img.src = universe.urlImage.url;
@@ -15,6 +16,7 @@ const closeReadWindow = () => {
 	readWindow.close();
 };
 
+/** CREATE */
 const openCreateWindow = () => {
 	const form = document.querySelector("form");
 	form.reset();
@@ -26,28 +28,36 @@ const readInputs = () => {
 	const inputs = document.querySelectorAll("input");
 
 	let baseString = "";
+	let numberConversion = "";
 	let energy = 0;
 
 	for (let i = 0; i < inputs.length; i++) {
 		if (i == 2) {
 			baseString += "-";
+			energy += Number(numberConversion);
+			numberConversion = "";
 		}
 		if (i == 0 || i == 2) {
 			if (inputs[i].value == "0") {
 				continue;
 			}
 		}
+		numberConversion += inputs[i].value;
 		baseString += inputs[i].value;
 	}
-
+	energy += Number(numberConversion);
+	numberConversion = undefined;
 	return [baseString, energy];
 };
 
 const createUniverse = () => {
 	let infoNewUniverse = readInputs();
+
+	let fiboNumbers = infoNewUniverse[0].split("-");
+
 	let newUniverse = {
 		name: infoNewUniverse[0],
-		image: "",
+		image: randomStringFromUniverse(fiboNumbers[0], fiboNumbers[1]),
 		energyBarrier: infoNewUniverse[1],
 		numLinks: 0,
 	};
@@ -66,3 +76,5 @@ const closeCreateWindow = () => {
 	form.reset();
 	createWindow.close();
 };
+
+/** DELETE */

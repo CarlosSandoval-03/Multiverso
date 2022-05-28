@@ -49,6 +49,7 @@ class Multiverse {
 	}
 
 	addUniverse(universeData, width, height) {
+		console.log(universeData);
 		for (let universe in this.template) {
 			if (universeData.name == universe) {
 				alert("El nombre del nuevo universo ya existe");
