@@ -1,7 +1,7 @@
 let multiverseFile, multiverse;
 
 function preload() {
-	const URL = "../../data/multiverseData.json";
+	const URL = "./../../data/multiverseData.json";
 	let data = loadJSON(URL, () => {
 		multiverseFile = data;
 		multiverse = new Multiverse(multiverseFile);
