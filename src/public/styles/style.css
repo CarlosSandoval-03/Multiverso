@@ -60,11 +60,11 @@ dialog::backdrop {
 	align-items: center;
 }
 
-form p {
+#form-create p {
 	font-size: 60px;
 }
 
-form {
+#form-create {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -72,7 +72,7 @@ form {
 }
 
 
-input {
+.create-input {
 	margin: 0 0.5rem;
 	padding: 0.7rem;
 	border: 1px solid var(--input-border-color);

@@ -1,16 +1,17 @@
 const createWindow = document.getElementById("create-window");
 const readWindow = document.getElementById("read-window");
+const updateWindow = document.getElementById("update-window");
 
 /** CREATE */
 const openCreateWindow = () => {
-	const form = document.querySelector("form");
+	const form = document.querySelector("#form-create");
 	form.reset();
 
 	createWindow.showModal();
 };
 
 const readInputs = () => {
-	const inputs = document.querySelectorAll("input");
+	const inputs = document.querySelectorAll(".create-input");
 
 	let baseString = "";
 	let numberConversion = "";
@@ -63,7 +64,7 @@ const createUniverse = () => {
 };
 
 const closeCreateWindow = () => {
-	const form = document.querySelector("form");
+	const form = document.querySelector("#form-create");
 	form.reset();
 	createWindow.close();
 };
@@ -84,5 +85,71 @@ const closeReadWindow = () => {
 };
 
 /** UPDATE */
+const inputCreator = (universeName, isConnected = false, isFull = false) => {
+	let universeNameSplit = universeName.split("-");
+
+	let newDiv = document.createElement("div");
+
+	newDiv.id = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+
+	let newLabel = document.createElement("label");
+	newLabel.setAttribute(
+		"for",
+		`Universo${universeNameSplit[0]}_${universeNameSplit[1]}`
+	);
+	newLabel.innerHTML = `Universo ${universeName}<br />`;
+
+	let newInput = document.createElement("input");
+	newInput.type = "checkbox";
+	newInput.name = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+	newInput.id = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+	newInput.value = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+	newInput.checked = isConnected;
+	if (!isConnected && isFull) {
+		newInput.disabled = true;
+	}
+
+	newLabel.appendChild(newInput);
+	newDiv.appendChild(newLabel);
+
+	const form = document.querySelector("#form-update");
+	form.appendChild(newDiv);
+};
+
+const enableMaxLinks = (idCheck) => {
+	document.getElementById(idCheck).disabled = false;
+};
+
+const disableMaxLinks = (idCheck) => {
+	document.getElementById(idCheck).disabled = true;
+};
+
+const openUpdateWindow = (universe = multiverse.selectedUniverse) => {
+	const form = document.querySelector("#form-update");
+	form.reset();
+
+	let links = multiverse.template[universe.name].connections;
+	console.log(links);
+
+	for (let universeName in multiverse.template) {
+		let isConnected = false;
+		let isFull = false;
+
+		if (links.includes(universeName)) {
+			isConnected = true;
+		}
+
+		if (links.length == 6) {
+			isFull = true;
+		}
+		inputCreator(universeName, isConnected, isFull);
+	}
+
+	updateWindow.showModal();
+};
+
+const closeUpdateWindow = () => {
+	updateWindow.close();
+};
 
 /** DELETE */

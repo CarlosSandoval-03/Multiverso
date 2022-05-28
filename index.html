@@ -18,12 +18,12 @@
 		<!-- CREATE -->
 		<dialog id="create-window">
 			<h2>Iniciemos por un nombre</h2>
-			<form action="">
-				<input type="text" maxlength="1" />
-				<input type="text" maxlength="1" />
+			<form action="" id="form-create">
+				<input class="create-input" type="text" maxlength="1" />
+				<input class="create-input" type="text" maxlength="1" />
 				<p>-</p>
-				<input type="text" maxlength="1" />
-				<input type="text" maxlength="1" />
+				<input class="create-input" type="text" maxlength="1" />
+				<input class="create-input" type="text" maxlength="1" />
 			</form>
 			<button onclick="createUniverse()">Crear</button>
 			<button onclick="closeCreateWindow()">Cerrar</button>
@@ -46,6 +46,13 @@
 		</dialog>
 
 		<!-- UPDATE -->
+		<dialog id="update-window">
+			<h2>Van a cambiar las cosas por aqui...</h2>
+			<form id="form-update" action="">
+				<h3>Elija las conexiones del universo ??-??</h3>
+			</form>
+			<button onclick="closeUpdateWindow()">Cerrar</button>
+		</dialog>
 
 		<!-- DELETE -->
 
@@ -54,7 +61,7 @@
 			<button onclick="openCreateWindow()">Crear</button>
 			<button onclick="openReadWindow()">Revisar</button>
 			<button id="info-universe">Universo: ??-??</button>
-			<button>Editar</button>
+			<button onclick="openUpdateWindow()">Editar</button>
 			<button>Eliminar</button>
 		</div>
 		<script src="src/public/scripts/randomString.js"></script>

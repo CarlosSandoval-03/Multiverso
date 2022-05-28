@@ -31,3 +31,11 @@ function draw() {
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight / 1.2);
 }
+
+function debugPrints() {
+	// Debug
+	console.table(multiverse.template);
+	console.table(multiverse.universes);
+	console.table(multiverse.links);
+	console.log(multiverse.selectedUniverse);
+}
