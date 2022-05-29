@@ -7,6 +7,7 @@ const openCreateWindow = () => {
 	const form = document.querySelector("#form-create");
 	form.reset();
 
+	stateFocus = false;
 	createWindow.showModal();
 };
 
@@ -66,6 +67,7 @@ const createUniverse = () => {
 const closeCreateWindow = () => {
 	const form = document.querySelector("#form-create");
 	form.reset();
+	stateFocus = true;
 	createWindow.close();
 };
 
@@ -85,13 +87,13 @@ const closeReadWindow = () => {
 };
 
 /** UPDATE */
-const inputCreator = (universeName, isConnected = false, isFull = false) => {
+const inputCreator = (universeName, isConnected = false) => {
 	let universeNameSplit = universeName.split("-");
 
 	let newDiv = document.createElement("div");
 
 	newDiv.id = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
-	newDiv.className = "container-edit-input";
+	newDiv.className = "container-update-input";
 
 	let newLabel = document.createElement("label");
 	newLabel.setAttribute(
@@ -104,11 +106,9 @@ const inputCreator = (universeName, isConnected = false, isFull = false) => {
 	newInput.type = "checkbox";
 	newInput.name = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
 	newInput.id = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
-	newInput.value = `Universo${universeNameSplit[0]}_${universeNameSplit[1]}`;
+	newInput.value = `${universeNameSplit[0]}_${universeNameSplit[1]}`;
 	newInput.checked = isConnected;
-	if (!isConnected && isFull) {
-		newInput.disabled = true;
-	}
+	newInput.classList.add("update-input");
 
 	newLabel.appendChild(newInput);
 	newDiv.appendChild(newLabel);
@@ -121,7 +121,7 @@ const openUpdateWindow = (universe = multiverse.selectedUniverse) => {
 	const form = document.querySelector("#form-update");
 	form.reset();
 
-	let inputs = document.querySelectorAll(".container-edit-input");
+	let inputs = document.querySelectorAll(".container-update-input");
 	inputs.forEach((input) => {
 		form.removeChild(input);
 	});
@@ -133,22 +133,59 @@ const openUpdateWindow = (universe = multiverse.selectedUniverse) => {
 
 	for (let universeName in multiverse.template) {
 		let isConnected = false;
-		let isFull = false;
-
 		if (links.includes(universeName)) {
 			isConnected = true;
 		}
-
-		if (links.length == 6) {
-			isFull = true;
+		if (universeName != universe.name) {
+			inputCreator(universeName, isConnected);
 		}
-		inputCreator(universeName, isConnected, isFull);
 	}
 
+	stateFocus = false;
 	updateWindow.showModal();
 };
 
+const readInputsUpdate = () => {
+	let newLinks = [];
+
+	const inputs = document.querySelectorAll(".update-input");
+
+	for (let input of inputs) {
+		if (input.checked && newLinks.length < Universe.LIMIT_CONNECTIONS) {
+			let string = input.value.split("_").join("-");
+
+			newLinks.includes(string) ? undefined : newLinks.push(string);
+		}
+	}
+	return newLinks;
+};
+
 const closeUpdateWindow = () => {
+	let universe = multiverse.selectedUniverse;
+	let newLinks = readInputsUpdate();
+
+	let row = undefined;
+	for (let i = 0; i < multiverse.universes.length; i++) {
+		if (multiverse.universes[i].name == universe.name) {
+			row = i;
+			break;
+		}
+	}
+
+	let newRow = [];
+	let oldLinks = multiverse.links[row];
+	for (let i = 0; i < oldLinks.length; i++) {
+		if (newLinks.includes(multiverse.universes[i].name)) {
+			newRow.push(1);
+		} else {
+			newRow.push(0);
+		}
+	}
+
+	multiverse.links[row] = newRow;
+	multiverse.connect();
+
+	stateFocus = true;
 	updateWindow.close();
 };
 

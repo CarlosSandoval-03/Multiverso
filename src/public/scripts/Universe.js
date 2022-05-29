@@ -17,6 +17,8 @@ class Universe {
 	static NODE_MAIN_SELECTED_COLOR = "#6600A1";
 	static NODE_CLICKED_COLOR = "#FF8000";
 
+	static LIMIT_CONNECTIONS = 6;
+
 	static draw = (xPos, yPos, name = "", color = Universe.NODE_COLOR) => {
 		textAlign(CENTER, CENTER);
 		fill(color);
@@ -33,7 +35,7 @@ class Universe {
 		this.numLinks = numLinks;
 
 		// Representative Image
-		this.urlImage = Universe.URL_RANDOM_IMAGES_ERROR;
+		this.urlImage = undefined;
 		this.fetchRepresentativeImage();
 	}
 

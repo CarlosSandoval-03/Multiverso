@@ -72,11 +72,15 @@ class Multiverse {
 			selected: true,
 		};
 
+		let lastUniverse = [];
 		let newLinks = [];
 		for (let i = 0; i < this.links.length; i++) {
 			this.links[i].push(0);
+			lastUniverse.push(0);
 			newLinks.push(this.links[i]);
 		}
+		lastUniverse.push(0);
+		newLinks.push(lastUniverse);
 		this.links = newLinks;
 
 		this.selectedUniverse = this.universes[this.universes.length - 1];
@@ -136,11 +140,16 @@ class Multiverse {
 		for (let i in this.universes) {
 			let universe = this.links[i];
 			let universeName = this.universes[i].name;
+			this.template[universeName].connections = [];
+
 			for (let j = 0; j < universe.length; j++) {
 				if (this.links[i][j] == 1) {
 					this.template[universeName].connections.push(this.universes[j].name);
 				}
 			}
+
+			this.universes[i].numLinks =
+				this.template[universeName].connections.length;
 		}
 	}
 
@@ -189,12 +198,15 @@ class Multiverse {
 		}
 	}
 
-	draw() {
-		this.selectUniverse();
-		for (let i in this.template) {
-			let connections = this.template[i].connections;
-			for (let connection of connections) {
-				this.drawConnect(i, connection);
+	draw(stateCanvas) {
+		if (stateCanvas) {
+			this.selectUniverse();
+
+			for (let i in this.template) {
+				let connections = this.template[i].connections;
+				for (let connection of connections) {
+					this.drawConnect(i, connection);
+				}
 			}
 		}
 		for (let universe of this.universes) {

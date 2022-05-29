@@ -1,6 +1,7 @@
 let multiverseFile,
 	multiverse,
-	count = 1;
+	count = 1,
+	stateFocus = true;
 
 function preload() {
 	const URL = "src/data/multiverseData.json";
@@ -20,7 +21,7 @@ function setup() {
 
 function draw() {
 	background(220);
-	multiverse.draw();
+	multiverse.draw(stateFocus);
 
 	if (mouseIsPressed === true || count > 0) {
 		let info = document.getElementById("info-universe");
