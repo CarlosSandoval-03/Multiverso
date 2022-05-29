@@ -88,6 +88,18 @@ class Multiverse {
 	}
 
 	removeUniverse(universeData = this.selectedUniverse) {
+		if (this.universes.length <= 1) {
+			alert(
+				"Es necesario de que exista un universo para que exista el multiverso"
+			);
+			return;
+		} else if (
+			this.selectedUniverse == undefined ||
+			this.template[this.selectedUniverse.name] == undefined
+		) {
+			alert("Cambios tan rapidos pueden destruir el multiverso");
+		}
+
 		let pos = 0;
 		for (let universe of this.universes) {
 			if (universe.name == universeData.name) {
@@ -212,7 +224,7 @@ class Multiverse {
 			} else {
 				setTimeout(() => {
 					this.template[universe].selected = false;
-				}, 200);
+				}, 100);
 			}
 		}
 	}
