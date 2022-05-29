@@ -72,10 +72,17 @@ const closeCreateWindow = () => {
 };
 
 /** READ */
-const openReadWindow = (universe = multiverse.selectedUniverse) => {
+const searchPhoto = async (universe) => {
 	const img = document.getElementById("universe-photo");
-	img.src = universe.urlImage.url;
+	if (universe.loadedPhoto) {
+		img.src = universe.urlImage.url;
+	} else {
+		img.src = "src/public/images/loader.jpg";
+	}
+};
 
+const openReadWindow = (universe = multiverse.selectedUniverse) => {
+	searchPhoto(universe);
 	const info = document.getElementById("p-universe");
 	info.innerHTML = `Universo: ${universe.name}<br />Nombre: ${universe.keyImage}<br />Barrera Energetica: ${universe.energyBarrier}<br />Numero de Conexiones: ${universe.numLinks}`;
 

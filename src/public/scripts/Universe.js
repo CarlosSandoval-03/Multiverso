@@ -37,6 +37,7 @@ class Universe {
 		// Representative Image
 		this.urlImage = undefined;
 		this.fetchRepresentativeImage();
+		this.loadedPhoto = false;
 	}
 
 	// Random image from keyword
@@ -49,6 +50,7 @@ class Universe {
 					this.fecthRandomImage();
 				} else {
 					this.urlImage = Url;
+					this.loadedPhoto = true;
 				}
 			})
 			.catch((error) => {
@@ -62,6 +64,7 @@ class Universe {
 		fetch(Universe.URL_RANDOM_IMAGES_SEARCH)
 			.then((Url) => {
 				this.urlImage = Url;
+				this.loadedPhoto = true;
 			})
 			.catch((error) => {
 				console.error(error);
