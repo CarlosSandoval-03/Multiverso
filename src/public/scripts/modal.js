@@ -1,6 +1,7 @@
 const createWindow = document.getElementById("create-window");
 const readWindow = document.getElementById("read-window");
 const updateWindow = document.getElementById("update-window");
+const deleteWindow = document.getElementById("delete-window");
 
 /** CREATE */
 const openCreateWindow = () => {
@@ -197,3 +198,20 @@ const closeUpdateWindow = () => {
 };
 
 /** DELETE */
+const openDeleteWindow = () => {
+	let spanName = document.getElementById("name-universe");
+	spanName.innerHTML = multiverse.selectedUniverse.name;
+
+	stateFocus = false;
+	deleteWindow.showModal();
+};
+
+const closeDeleteWindow = () => {
+	stateFocus = true;
+	deleteWindow.close();
+};
+
+const deleteUniverse = () => {
+	multiverse.removeUniverse();
+	closeDeleteWindow();
+};

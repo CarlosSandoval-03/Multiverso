@@ -3,6 +3,7 @@
 	--canva-background-color: rgb(0, 255, 0);
 	--controller-background-color: red;
 	--input-border-color: #333;
+	--warning-color: red;
 }
 
 html,
@@ -80,4 +81,8 @@ dialog::backdrop {
 	height: 50px;
 	text-align: center;
 	font-size: 3rem;
+}
+
+#name-universe {
+	color: var(--warning-color)
 }

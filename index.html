@@ -55,6 +55,14 @@
 		</dialog>
 
 		<!-- DELETE -->
+		<dialog id="delete-window">
+			<h2>Esta accion no es reversible</h2>
+			<p>
+				Esta apunto de eliminar el universo <span id="name-universe"></span>
+			</p>
+			<button onclick="deleteUniverse()">Eliminar Definitivamente</button>
+			<button onclick="closeDeleteWindow()">Cerrar</button>
+		</dialog>
 
 		<main id="mainView"></main>
 		<div id="controller">
@@ -62,7 +70,7 @@
 			<button onclick="openReadWindow()">Revisar</button>
 			<button id="info-universe">Universo: ??-??</button>
 			<button onclick="openUpdateWindow()">Editar</button>
-			<button>Eliminar</button>
+			<button onclick="openDeleteWindow()">Eliminar</button>
 		</div>
 		<script src="src/public/scripts/randomString.js"></script>
 		<script src="src/public/scripts/sketch.js"></script>

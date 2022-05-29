@@ -87,6 +87,45 @@ class Multiverse {
 		return true;
 	}
 
+	removeUniverse(universeData = this.selectedUniverse) {
+		let pos = 0;
+		for (let universe of this.universes) {
+			if (universe.name == universeData.name) {
+				break;
+			}
+			pos++;
+		}
+
+		let newLinks = [];
+		for (let i = 0; i < this.links.length; i++) {
+			if (i == pos) {
+				continue;
+			}
+
+			let row = [];
+			for (let j = 0; j < this.links[i].length; j++) {
+				if (j != pos) {
+					row.push(this.links[i][j]);
+				}
+			}
+			newLinks.push(row);
+		}
+
+		this.links = newLinks;
+		delete this.template[this.universes[pos].name];
+
+		let newArrayOfUniverses = [];
+		for (let i = 0; i < this.universes.length; i++) {
+			if (pos != i) {
+				newArrayOfUniverses.push(this.universes[i]);
+			}
+		}
+
+		this.universes = newArrayOfUniverses;
+		this.selectedUniverse = this.universes[0];
+		this.connect();
+	}
+
 	/**
 	 * Reference: https://discourse.processing.org/t/how-to-add-text-inside-circle-or-any-other-shapes-in-p5-js/20092
 	 * User: Yom - Processing Foundation
