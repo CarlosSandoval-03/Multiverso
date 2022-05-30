@@ -3,7 +3,7 @@ class Universe {
 	static URL_RANDOM_IMAGES_ERROR =
 		"https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200";
 
-	static SIZE_NODE = 60;
+	static SIZE_NODE = 50;
 
 	static NODE_COLOR = "#FFFFFF";
 	static TEXT_NODE_COLOR = "#000000";
