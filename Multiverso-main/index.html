@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Multiverse - Graph Sandbox</title>
+
+		<link rel="stylesheet" type="text/css" href="src/public/styles/style.css" />
+
+		<script src="libraries/p5.min.js"></script>
+		<script src="libraries/p5.sound.min.js"></script>
+		<script src="src/public/scripts/Universe.js"></script>
+		<script src="src/public/scripts/Multiverse.js"></script>
+	</head>
+
+	<body>
+		<!-- CREATE -->
+		<dialog id="create-window">
+			<h2>Iniciemos por un nombre</h2>
+			<form action="" id="form-create">
+				<input class="create-input" type="text" maxlength="1" />
+				<input class="create-input" type="text" maxlength="1" />
+				<p>-</p>
+				<input class="create-input" type="text" maxlength="1" />
+				<input class="create-input" type="text" maxlength="1" />
+			</form>
+			<button onclick="createUniverse()">Crear</button>
+			<button onclick="closeCreateWindow()">Cerrar</button>
+		</dialog>
+
+		<!-- READ -->
+		<dialog id="read-window">
+			<h2>Mira lo que guarda cada universo...</h2>
+			<p id="p-universe">
+				Universo: ??-?? <br />
+				Nombre: ????? <br />
+				Barrera Energética: ?? <br />
+				Número de Conexiones: ?
+			</p>
+			<figure>
+				<img id="universe-photo" src="" alt="Random Photo of Universe" />
+				<figcaption>Imagen caracteristica del universo</figcaption>
+			</figure>
+			<button onclick="closeReadWindow()">Cerrar</button>
+		</dialog>
+
+		<!-- UPDATE -->
+		<dialog id="update-window">
+			<h2>Van a cambiar las cosas por aqui... (Solo 6 conexiones)</h2>
+			<form id="form-update" action="">
+				<h3 id="title-update">Elija las conexiones del universo ??-??</h3>
+			</form>
+			<button onclick="closeUpdateWindow()">Cerrar</button>
+		</dialog>
+
+		<!-- DELETE -->
+		<dialog id="delete-window">
+			<h2>Esta accion no es reversible</h2>
+			<p>
+				Esta apunto de eliminar el universo <span id="name-universe"></span>
+			</p>
+			<button onclick="deleteUniverse()">Eliminar Definitivamente</button>
+			<button onclick="closeDeleteWindow()">Cerrar</button>
+		</dialog>
+
+		<main id="mainView"></main>
+		<div id="controller">
+			<button onclick="openCreateWindow()">Crear</button>
+			<button onclick="openReadWindow()">Revisar</button>
+			<button id="info-universe">Universo: ??-??</button>
+			<button onclick="openUpdateWindow()">Editar</button>
+			<button onclick="openDeleteWindow()">Eliminar</button>
+		</div>
+		<script src="src/public/scripts/randomString.js"></script>
+		<script src="src/public/scripts/sketch.js"></script>
+		<script src="src/public/scripts/modal.js"></script>
+	</body>
+</html>

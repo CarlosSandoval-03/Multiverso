@@ -20,7 +20,7 @@ function setup() {
 }
 
 function draw() {
-	background(220);
+	background(225);
 	multiverse.draw(stateFocus);
 
 	if (mouseIsPressed === true || count > 0) {

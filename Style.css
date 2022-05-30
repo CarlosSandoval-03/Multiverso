@@ -1,0 +1,43 @@
+body {
+	background: #000;
+	font-family: "Forum", serif;
+}
+.style-l3hhhzgs {
+	border-top: 1px solid rgba(235, 234, 230, 0.85);
+}
+.margin {
+	margin-left: 20px;
+}
+.multiverse {
+	height: 70vh;
+	width: 100%;
+}
+.title {
+	text-align: center;
+	color: #e56e4e;
+	margin: 0.5cm;
+}
+.text {
+	text-align: center;
+	color: #ebeae6;
+}
+.card {
+	border: 0 !important;
+	background-color: #000;
+}
+.card-title {
+	min-height: 2.5rem;
+	text-align: center;
+	color: rgb(229, 110, 78);
+}
+.card-text {
+	min-height: 8rem;
+	text-align: center;
+	color: white;
+}
+.started {
+	text-align: center;
+	color: white;
+	min-height: 1px;
+	max-height: 2px;
+}

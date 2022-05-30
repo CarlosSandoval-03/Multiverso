@@ -13,7 +13,7 @@ class Universe {
 
 	static STROKE_SELECTED_COLOR = "#FF0000";
 	static STROKE_SELECTED_WEIGTH = "#FF0000";
-	static NODE_SELECTED_COLOR = "rgba(0,255,0, 1)";
+	static NODE_SELECTED_COLOR = "#D16AFF";
 	static NODE_MAIN_SELECTED_COLOR = "#6600A1";
 	static NODE_CLICKED_COLOR = "#FF8000";
 
